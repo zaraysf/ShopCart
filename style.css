@@ -47,6 +47,18 @@ body {
     padding: 50px 10px;
   }
 
+  @media (max-width : 1000px) {
+    .shop{
+      grid-template-columns:repeat(2 , 254px);
+    }
+  }
+
+  @media (max-width : 500px) {
+    .shop{
+      grid-template-columns:repeat(1 , 254px);
+    }
+  }
+
   .item{
     border: 2px solid #212529;
     border-radius: 5px;
@@ -83,9 +95,9 @@ body {
   }
 
   .pluss{
-    color: red;
+    color: green;
   }
   .mines{
-    color: green;
+    color: red;
   }
 
