@@ -9,12 +9,13 @@ const itemPrice = document.querySelector('.price').innerText;
  return {itemId,itemImg,itemDetail,itemPrice};
  }
 
- const generateShop = () => {   
+ function generateShop (){   
 return ( 
-    shop.innerHTML = shopItemData.map(()=>{
-
-        `
-        <div class="item" id="item-item${itemId}">
+    shop.innerHTML = shopItemData.map((x)=>{
+    const {itemId,itemImg,itemDetail,itemPrice} = x;
+            
+    return  `
+        <div class="item" id="item-id${itemId}">
             <img width=250 src="${itemImg}">
             <div class="${itemDetail}">
                 <h3>Fation Car</h3>
@@ -24,7 +25,7 @@ return (
                 <h2 class="${itemPrice}">$ 45M</h2>
                 <div class="buttons">
                     <i class="bi bi-dash-lg pluss"></i>
-                    <div class="qty">0</div>
+                    <div class="qty" id="item-id${itemId}">0</div>
                     <i class="bi bi-plus-lg mines"></i>
                 </div>
             </div>
@@ -35,28 +36,28 @@ return (
     );
 }
 
+// document.querySelector('.basket') += generateShop ();
 
 
 
 
-
-// const plusBtn = document.querySelectorAll('.pluss');
-// plusBtn.forEach(element => {
-//     element.addEventListener('click' , (event)=>{
-//         const getEvent = event;
-// console.log(getEvent);
-//     }) 
-// });
-
-
-// const minesBtn = document.querySelectorAll('.mines');
-// plusBtn.forEach(element => {
-//     element.addEventListener('click' , (event)=>{
-//         const getEvent = event;
-// console.log(getEvent);
-//     }) 
-// });
+const plusBtn = document.querySelectorAll('.pluss');
+plusBtn.forEach((element) => {
+    element.addEventListener('click' , (event)=>{
+        const getEvent = event;
+        document.querySelector('.basket') += generateShop ();
+    }) 
+});
 
 
-generateShop();
+const minesBtn = document.querySelectorAll('.mines');
+plusBtn.forEach((element) => {
+    element.addEventListener('click' , (event)=>{
+        const getEvent = event;
+        document.querySelector('.basket') -= generateShop ();
+    }) 
+});
+
+
+
 
