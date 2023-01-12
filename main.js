@@ -1,14 +1,18 @@
 const shop = document.getElementById('shop');
 function addCar (){
-    const addQty = document.querySelector('.cartAmount');
-    ++addQty.innerText; 
+    const qty = document.querySelector('.cartAmount');
+    ++qty.innerText; 
+}
+function reduceCar (){
+    const qty = document.querySelector('.cartAmount');
+    --qty.innerText; 
 }
 
-const shopItemData = () =>{
+const shopItemData = (item) =>{
 const itemId = item.id;
-const itemImg = document.querySelector('.img').src;
-const itemDetail = document.querySelector('.detail').innerText;
-const itemPrice = document.querySelector('.price').innerText;
+const itemImg = item.querySelector('.img').src;
+const itemDetail = item.querySelector('.detail').innerText;
+const itemPrice = item.querySelector('.price').innerText;
  return {itemId,itemImg,itemDetail,itemPrice};
  }
 
@@ -17,49 +21,56 @@ const itemPrice = document.querySelector('.price').innerText;
     const {itemId,itemImg,itemDetail,itemPrice} = item;
             
     return  `
-        <div class="item" id="item-id${item.itemId}">
-            <img width=250 src="${itemImg}">
-            <div class="${itemDetail}">
-                <h3>Fation Car</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
-                </div>
-                <div class="price-qty">
-                <h2 class="${itemPrice}">$ 45M</h2>
-                <div class="buttons">
-                    <i class="bi bi-dash-lg pluss"></i>
-                    <div class="qty" id="item-id${item.itemId}">0</div>
-                    <i class="bi bi-plus-lg mines"></i>
-                </div>
-            </div>
-        </div>
+                    <li id="item-${item.itemId}" >
+                    <a href="#">
+                        <img src=${itemImg}>
+                        <div class="properties-cart">
+                            <span class="item-title">${itemDetail}</span>
+                            <span class="item-price">${itemPrice}</span>
+                            <span class="quantity-item">1</span>
+                        </div>
+                    </a>
+                    <i class="far fa-trash-alt delete-item"></i>
+                </li>
         `
 }
 
-// document.querySelector('.basket') += generateShop ();
+    const plusBtn = document.querySelectorAll('.pluss');
+    plusBtn.forEach((element) => {
+        element.addEventListener('click' , (event)=>{
+            addCar ();
+            
+            const product = event.target.parentElement;
+            const item = shopItemData(product);
+    const addItem = document.querySelector(`#item-${item.itemId}`);
+            if (addItem == null) {
+                document.querySelector('.basket').innerHTML +=  generateShop(item);
+            }
+            else{
+                ++document.querySelector('.quantity-item').innerText; 
+            }
+
+        }) 
+    });
 
 
-
-
-const plusBtn = document.querySelectorAll('.pluss');
-plusBtn.forEach((element) => {
-    element.addEventListener('click' , (event)=>{
-        addCar ()
-        
-        const product = event.target.parentElement;
-        const item = shopItemData(product);
-
-    }) 
-});
-
-
-// const minesBtn = document.querySelectorAll('.mines');
-// plusBtn.forEach((element) => {
+// const minBtn = document.querySelectorAll('.mines');
+// minBtn.forEach((element) => {
 //     element.addEventListener('click' , (event)=>{
-//         const getEvent = event;
-//         document.querySelector('.basket') -= generateShop ();
+        
+//         const product = event.target.parentElement;
+//         const item = shopItemData(product);
+
+//         const qty = document.querySelector('.cartAmount');
+        
+//         if(qty.innerText = 0){
+//             alert("Empty Basket")
+//         }else{
+//             reduceCar (); 
+//         }
+
 //     }) 
 // });
-
 
 
 
