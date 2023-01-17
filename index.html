@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,90 +12,91 @@
 
 
 <body>
-   <div class="navbar">
-    <h1 class="logo">ShopCart</h1>
+    <div class="navbar">
+        <h1 class="logo">ShopCart</h1>
         <div class="cart">
             <i class="bi bi-cart2"></i>
             <div class="cartAmount">0</div>
             <div class="basket"></div>
         </div>
-   </div>
+    </div>
 
-   <div class="shop" id="shop" action="#result.html" method="get">
+    <div class="shop" id="shop" action="#result.html" method="get">
 
 
-  <div class="item">
-        <img width=250 src="image/campbell-3ZUsNJhi_Ik-unsplash.jpg">
-        <div class="detail">
-            <h3>Fation Car</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
-        </div>
+        <div class="item">
+            <img width=250 src="image/campbell-3ZUsNJhi_Ik-unsplash.jpg">
+            <div class="detail">
+                <h3>Fation Car</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+            </div>
             <div class="price-qty">
-            <h2 class="price">$ 45M</h2>
-            <div class="buttons">
-                <a><i class="bi bi-dash-lg mines"></i></a>
-                <div class="qty">0</div>
-                <a><i class="bi bi-plus-lg pluss"></i></a>
+                <h2 class="price">$ 45M</h2>
+                <div class="buttons">
+                    <a><i onclick="decrement(id)" class="bi bi-dash-lg mines"></i></a>
+                    <div class="qty">0</div>
+                    <a><i onclick="increment(id)" class="bi bi-plus-lg pluss"></i></a>
+                </div>
             </div>
         </div>
+
+
+        <div class="item">
+            <img width=250 src="image/dhiva-krishna-X16zXcbxU4U-unsplash.jpg" alt="">
+            <div class="detail">
+                <h3>Modeling Car</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+            </div>
+            <div class="price-qty">
+                <h2 class="price">$ 200M</h2>
+                <div class="buttons">
+                    <a><i  class="bi bi-dash-lg mines"></i></a>
+                    <div class="qty">0</div>
+                    <a><i  class="bi bi-plus-lg pluss"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <img width=250 src="image/grahame-jenkins-p7tai9P7H-s-unsplash.jpg" alt="">
+            <div class="detail">
+                <h3>Daily Car</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+            </div>
+            <div class="price-qty">
+                <h2 class="price">$ 80M</h2>
+                <div class="buttons">
+                    <a><i  class="bi bi-dash-lg mines"></i></a>
+                    <div class="qty">0</div>
+                    <a><i  class="bi bi-plus-lg pluss"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="item">
+            <img width=250 src="image/lance-asper-N9Pf2J656aQ-unsplash.jpg" alt="">
+            <div class="detail">
+                <h3>Fast Car</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+            </div>
+            <div class="price-qty">
+                <h2 class="price">$ 160M</h2>
+                <div class="buttons">
+                    <a><i onclick="reduceCar()" class="bi bi-dash-lg mines"></i></a>
+                    <div class="qty">0</div>
+                    <a><i onclick="addCar()" class="bi bi-plus-lg pluss"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
-    
-
-    <div class="item">
-        <img width=250 src="image/dhiva-krishna-X16zXcbxU4U-unsplash.jpg" alt="">
-        <div class="detail">
-            <h3>Modeling Car</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
-        </div>
-        <div class="price-qty">
-            <h2 class="price">$ 200M</h2>
-            <div class="buttons">
-                <a><i class="bi bi-dash-lg mines"></i></a>
-                <div class="qty">0</div>
-                <a><i class="bi bi-plus-lg pluss"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="item">
-        <img width=250 src="image/grahame-jenkins-p7tai9P7H-s-unsplash.jpg" alt="">
-        <div class="detail">
-            <h3>Daily Car</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
-        </div>
-        <div class="price-qty">
-            <h2 class="price">$ 80M</h2>
-            <div class="buttons">
-                <a><i class="bi bi-dash-lg mines"></i></a>
-                <div class="qty">0</div>
-                <a><i class="bi bi-plus-lg pluss"></i></a>
-            </div>
-        </div>
-    </div>
-
-       
-     <div class="item">
-        <img width=250 src="image/lance-asper-N9Pf2J656aQ-unsplash.jpg" alt="">
-        <div class="detail">
-            <h3>Fast Car</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
-        </div>
-        <div class="price-qty">
-            <h2 class="price">$ 160M</h2>
-            <div class="buttons">
-                <a><i class="bi bi-dash-lg mines"></i></a>
-                <div class="qty">0</div>
-                <a><i class="bi bi-plus-lg pluss"></i></a>
-            </div>
-        </div>
-    </div> 
-
-
-
-   </div>
 
 
 </body>
 
 <script type="text/javascript" src="main.js"></script>
+
 </html>
