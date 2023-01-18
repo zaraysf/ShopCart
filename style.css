@@ -101,3 +101,37 @@ body {
     color: red;
   }
 
+
+/* image add item */
+  .cart {
+    position: relative;
+  }
+
+  .basket {
+    background: #eeee;
+    position: absolute;
+    font-size: 10pt;
+    width: 160px;
+    height: 150px;
+    padding: 10px;
+    margin:5px;
+    top: 30px;
+    left: -120px;
+  }
+  
+  .basket li {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  .basket a {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+  }
+  .basket img {
+    width: 40px;
+    height: 30px;
+    margin: 5px;
+  }

@@ -4,22 +4,28 @@ function addTotalCar() {
     ++qty.innerText;
 }
 
-function reduceCar() {
+function reduceTotalCar() {
     const qty = document.querySelector('.cartAmount');
     const count = document.querySelector('.qty');
     if (qty.id === 0) return;
     else { --qty.innerText; --count.innerText; }
 }
 
-function count(car) {
+function increment(car) {
     const count = car.querySelector('.qty');
     ++count.innerText;
 }
 
+function decrement(car) {
+    const count = car.querySelector('.qty');
+    --count.innerText;
+}
+
+
 const shopItemData = (car) => {
     const id = car.id;
     const itemImg = car.querySelector('img').src;
-    const itemDetail = car.querySelector('.detail').innerText;
+    const itemDetail = car.querySelector('.title').innerText;
     const itemPrice = car.querySelector('.price').innerText;
     const productInfo = { id, itemImg, itemDetail, itemPrice };
     return productInfo;
@@ -32,7 +38,7 @@ function generateShop(car) {
     const itemCart = `
                     <li id="item-${id}" >
                     <a href="#">
-                        <img src=${itemImg}>
+                        <img class="add-img" src=${itemImg}>
                         <div class="properties-cart">
                             <span class="item-title">${itemDetail}</span>
                             <span class="item-price">${itemPrice}</span>
@@ -52,7 +58,8 @@ plusBtn.forEach((element) => {
         addTotalCar();
        
         const product = event.target.parentElement.parentElement.parentElement.parentElement;
-        count(product);
+        increment(product);
+
         const item = shopItemData(product);
 
         const addItem = document.querySelector(`#item-${item.id}`);
@@ -63,6 +70,28 @@ plusBtn.forEach((element) => {
         else {
             ++document.querySelector('.quantity-item').innerText;
         }
+
+    })
+});
+
+const minesBtn = document.querySelectorAll('.mines');
+minesBtn.forEach((element) => {
+    element.addEventListener('click', (event) => {
+        reduceTotalCar();
+       
+        const product = event.target.parentElement.parentElement.parentElement.parentElement;
+        decrement(product);
+
+        const item = shopItemData(product);
+
+        // const qytTotal = document.querySelector('.cartAmount');
+       
+        // if (qytTotal === 0) {
+        //     basket.style.display = "block";
+        // }
+        // else {
+        //     --document.querySelector('.quantity-item').innerText;
+        // }
 
     })
 });
