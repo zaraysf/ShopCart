@@ -1,4 +1,3 @@
-const shop = document.getElementById('shop');
 function addTotalCar() {
     const qty = document.querySelector('.cartAmount');
     ++qty.innerText;
@@ -6,21 +5,21 @@ function addTotalCar() {
 
 function reduceTotalCar() {
     const qty = document.querySelector('.cartAmount');
-    const count = document.querySelector('.qty');
-    if (qty.id === 0) return;
-    else { --qty.innerText; --count.innerText; }
+    if (qty === 0) return;
+    else {
+        --qty.innerText;
+    }
 }
 
-function increment(car) {
-    const count = car.querySelector('.qty');
-    ++count.innerText;
+function increament(car) {
+    const increament = car.querySelector('.qty');
+    ++increament.innerText;
 }
 
-function decrement(car) {
-    const count = car.querySelector('.qty');
-    --count.innerText;
+function decreament(car) {
+    const decreament = car.querySelector('.qty');
+    --decreament.innerText;
 }
-
 
 const shopItemData = (car) => {
     const id = car.id;
@@ -38,34 +37,53 @@ function generateShop(car) {
     const itemCart = `
                     <li id="item-${id}" >
                     <a href="#">
-                        <img class="add-img" src=${itemImg}>
+                         <img src=${itemImg}>
                         <div class="properties-cart">
                             <span class="item-title">${itemDetail}</span>
                             <span class="item-price">${itemPrice}</span>
                             <span class="quantity-item">1</span>
                         </div>
                     </a>
-                    <i onclick= "deletebtn()"  class="far fa-trash-alt delete-item"></i>
+                    <i  class="bi bi-trash3 delete-item"></i>
                 </li>
                 `
     return itemCart;
 }
 
-
 const plusBtn = document.querySelectorAll('.pluss');
 plusBtn.forEach((element) => {
     element.addEventListener('click', (event) => {
-        addTotalCar();
-       
+        const emptyCart = document.querySelector('.bi-cart2');
+        emptyCart.style.display = "none";
+
         const product = event.target.parentElement.parentElement.parentElement.parentElement;
-        increment(product);
+        addTotalCar();
+        increament(product);
 
         const item = shopItemData(product);
 
         const addItem = document.querySelector(`#item-${item.id}`);
-       
+
         if (addItem == null) {
             document.querySelector('.basket').innerHTML += generateShop(item);
+
+            /////////// DELETE BTN
+            const deleteBtn = document.querySelectorAll('.delete-item');
+            deleteBtn.forEach((element) => {
+              element.addEventListener('click', (e) => {
+                const li = e.target.parentElement.parentElement;
+                const qtyItem = li.querySelector(".quantity-item");
+        
+                const qytTotal = document.querySelector('.cartAmount');
+                qytTotal.innerText = qytTotal.innerText - qtyItem.innerText
+      
+                if (qytTotal.innerText == 0) {
+                  emptyCart.style.display = "block";
+                }
+                li.remove();
+              });  
+            });
+
         }
         else {
             ++document.querySelector('.quantity-item').innerText;
@@ -74,25 +92,24 @@ plusBtn.forEach((element) => {
     })
 });
 
-const minesBtn = document.querySelectorAll('.mines');
-minesBtn.forEach((element) => {
+
+const minsBtn = document.querySelectorAll('.mines');
+minsBtn.forEach((element) => {
     element.addEventListener('click', (event) => {
-        reduceTotalCar();
-       
+        
         const product = event.target.parentElement.parentElement.parentElement.parentElement;
-        decrement(product);
-
+        reduceTotalCar();
+        decreament(product);
         const item = shopItemData(product);
+        const addItem = document.querySelector(`#item-${item.id}`);
 
-        // const qytTotal = document.querySelector('.cartAmount');
-       
-        // if (qytTotal === 0) {
-        //     basket.style.display = "block";
-        // }
-        // else {
-        //     --document.querySelector('.quantity-item').innerText;
-        // }
+        if (addItem == null) {
+            const emptyCart = document.querySelector('.bi-cart2');
+            emptyCart.style.display = "none";     
+        }
+        else {
+            --document.querySelector('.quantity-item').innerText;
+        }
 
     })
 });
-
