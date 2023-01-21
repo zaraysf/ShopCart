@@ -5,10 +5,7 @@ function addTotalCar() {
 
 function reduceTotalCar() {
     const qty = document.querySelector('.cartAmount');
-    if (qty === 0) return;
-    else {
         --qty.innerText;
-    }
 }
 
 function increament(car) {
